@@ -1,6 +1,3 @@
-Hola, soy Rub ́en Dabrio, estudiante de Ingenier ́ıa Inform ́atica y especializado en la menci ́on de ingenier ́ıa del software.
-En este proyecto personal he desarrollado una interfaz ATM (cajero autom ́atico) para ir aplicando los conocimientos
-aprendidos a la pr ́actica.
 El sistema funciona de la siguiente manera: un cliente puede darse de alta de una cuenta en el cajero e iniciar sesi ́on en la
 misma para administrar su dinero. Un cliente puede tener varias cuentas y tambi ́en puede no tener ninguna. Puede darse
 de baja en cualquier momento pero deber ́a vaciar su cuenta antes de eliminarla, ya sea via transferencia a otra cuenta o
