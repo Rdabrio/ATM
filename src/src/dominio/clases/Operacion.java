@@ -1,4 +1,4 @@
-package dominio;
+package dominio.clases;
 
 public abstract class Operacion {
     private Titular titular;

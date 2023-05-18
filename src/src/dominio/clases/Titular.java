@@ -1,8 +1,6 @@
-package dominio;
+package dominio.clases;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class Titular {
 
