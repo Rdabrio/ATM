@@ -11,7 +11,11 @@ public class Main {
         Connection con= DriverManager.getConnection(url,user,passwd);
         // 3. Construir comandos SQL
         Statement state=con.createStatement();
-        String s="insert into persona values('ruben.dabrio', 'ruben')";
+        String s="create table cuentaBancaria(" +
+                "ID Integer," +
+                "emailPersona varchar(20) unique not null," +
+                "primary key(ID)," +
+                "foreign key(emailPersona) references persona(email));";
         state.executeUpdate(s);
     }
 
