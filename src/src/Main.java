@@ -1,22 +1,50 @@
+import persistencia.ctrldata.FinderBanco;
+import persistencia.ctrldata.GatewayBanco;
+
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        // 2. Conéctese a la "biblioteca" de datos
-        String url = "jdbc:mysql://localhost:3306/atmdb";
-        String user= "root";
-        String passwd= "";
-        Connection con= DriverManager.getConnection(url,user,passwd);
-        // 3. Construir comandos SQL
-        Statement state=con.createStatement();
-        String s="create table cuentaBancaria(" +
-                "ID Integer," +
-                "emailPersona varchar(20) unique not null," +
-                "primary key(ID)," +
-                "foreign key(emailPersona) references persona(email));";
-        state.executeUpdate(s);
+        Scanner scanner = new Scanner(System.in);
+        String codigo = scanner.nextLine();
+
+        while (!codigo.equals("0")) {
+
+            if (codigo.equals("find all banco")) {
+
+                ArrayList<GatewayBanco> lgb = FinderBanco.getInstance().findAll();
+                if (lgb.size() == 0) System.out.println("No hay ningun banco en la tabla");
+                else for (GatewayBanco gb:lgb) System.out.println(gb.getNombre());
+                codigo = scanner.nextLine();
+                if (codigo.equals("inserta")) {
+                    System.out.println("Escribe el nombre del banco a insertar:");
+                    String nombre = scanner.nextLine();
+                    GatewayBanco gb = new GatewayBanco(nombre);
+                    gb.insert();
+                }
+
+                else if (codigo.equals("update")) {
+                    System.out.println("Escribe el nombre del banco a eliminar:");
+                    String nombre = scanner.nextLine();
+                    for (GatewayBanco gb:lgb) {
+                        if (gb.getNombre().equals(nombre)) gb.remove();
+                    }
+                }
+            }
+
+            else if (codigo.equals("find banco")) {
+                System.out.println("Escribe el nombre del banco a buscar:");
+                String nombre = scanner.nextLine();
+                GatewayBanco gb = FinderBanco.getInstance().find(nombre);
+                System.out.println("El banco con nombre "+gb.getNombre()+" existe");
+            }
+            codigo = scanner.nextLine();
+
+        }
     }
 
 }
