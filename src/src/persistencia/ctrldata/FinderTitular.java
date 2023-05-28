@@ -58,18 +58,58 @@ public class FinderTitular {
         return lcb;
     }
 
-    public ArrayList<GatewayOperacion> findByCantidad(float cantidad) throws SQLException {
+    public ArrayList<GatewayTitular> findByNombreUsuario(String nusuario) throws SQLException {
         Connection con = DriverManager.getConnection(url, user, passwd);
         Statement state = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-        ResultSet rs = state.executeQuery("SELECT * FROM ingreso WHERE cantidad = '"+cantidad+"'");
+        ResultSet rs = state.executeQuery("SELECT * FROM titular WHERE nombreUsuario = '"+nusuario+"'");
 
-        ArrayList<GatewayOperacion> lcb = new ArrayList<>();
+        ArrayList<GatewayTitular> lcb = new ArrayList<>();
         if(!rs.first()) return lcb;
         while (!rs.isAfterLast()) {
-            String nombreU = rs.getString("nombreUsuario");
-            Date fecha = rs.getDate("fechayhora");
-            String tipo = rs.getString("tipo");
-            lcb.add(new GatewayOperacion(nombreU, fecha, tipo, cantidad));
+            int id = rs.getInt("idCuenta");
+            String email = rs.getString("emailPersona");
+            String contrasena = rs.getString("contrasena");
+            float balance = rs.getFloat("balance");
+            int iban = rs.getInt("iban");
+            lcb.add(new GatewayTitular(email, id, nusuario, contrasena, balance, iban));
+            rs.next();
+        }
+        return lcb;
+    }
+
+    public ArrayList<GatewayTitular> findByBalance(float balance) throws SQLException {
+        Connection con = DriverManager.getConnection(url, user, passwd);
+        Statement state = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+        ResultSet rs = state.executeQuery("SELECT * FROM titular WHERE balance = '"+balance+"'");
+
+        ArrayList<GatewayTitular> lcb = new ArrayList<>();
+        if(!rs.first()) return lcb;
+        while (!rs.isAfterLast()) {
+            int id = rs.getInt("idCuenta");
+            String email = rs.getString("emailPersona");
+            String nombre = rs.getString("nombreUsuario");
+            String contrasena = rs.getString("contrasena");
+            int iban = rs.getInt("iban");
+            lcb.add(new GatewayTitular(email, id, nombre, contrasena, balance, iban));
+            rs.next();
+        }
+        return lcb;
+    }
+
+    public ArrayList<GatewayTitular> findByIban(int iban) throws SQLException {
+        Connection con = DriverManager.getConnection(url, user, passwd);
+        Statement state = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+        ResultSet rs = state.executeQuery("SELECT * FROM titular WHERE iban = '"+iban+"'");
+
+        ArrayList<GatewayTitular> lcb = new ArrayList<>();
+        if(!rs.first()) return lcb;
+        while (!rs.isAfterLast()) {
+            int id = rs.getInt("idCuenta");
+            String email = rs.getString("emailPersona");
+            String nombre = rs.getString("nombreUsuario");
+            String contrasena = rs.getString("contrasena");
+            float balance = rs.getFloat("balance");
+            lcb.add(new GatewayTitular(email, id, nombre, contrasena, balance, iban));
             rs.next();
         }
         return lcb;
