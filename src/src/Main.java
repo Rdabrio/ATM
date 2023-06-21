@@ -1,7 +1,6 @@
-import persistencia.ctrldata.FinderBanco;
-import persistencia.ctrldata.GatewayBanco;
+import persistencia.rowdata.FinderBanco;
+import persistencia.rowdata.GatewayBanco;
 
-import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 

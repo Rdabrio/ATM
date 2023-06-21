@@ -1,29 +1,29 @@
-package persistencia.ctrldata;
+package persistencia.rowdata;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class FinderIngreso {
-    private static FinderIngreso instance;
+public class FinderRetirada {
+    private static FinderRetirada instance;
     private String url;
     private String user;
     private String passwd;
 
-    private FinderIngreso() {
+    private FinderRetirada() {
         this.url = "jdbc:mysql://localhost:3306/atmdb";
         this.user= "root";
         this.passwd= "";
     }
 
-    public static FinderIngreso getInstance() {
-        if (instance == null) instance = new FinderIngreso();
+    public static FinderRetirada getInstance() {
+        if (instance == null) instance = new FinderRetirada();
         return instance;
     }
 
-    public GatewayIngreso find(String nombreUsuario, Date fechayhora) throws SQLException {
+    public GatewayRetirada find(String nombreUsuario, Date fechayhora) throws SQLException {
         Connection con = DriverManager.getConnection(url, user, passwd);
         Statement state = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-        ResultSet rs = state.executeQuery("SELECT * FROM ingreso WHERE nombreUsuario='"+nombreUsuario+"' and fechayhora='"+fechayhora.toString()+"'");
+        ResultSet rs = state.executeQuery("SELECT * FROM retirada WHERE nombreUsuario='"+nombreUsuario+"' and fechayhora='"+fechayhora.toString()+"'");
         rs.first();
         String nombreU = rs.getString("nombreUsuario");
         Date fecha = rs.getDate("fechayhora");
@@ -31,41 +31,38 @@ public class FinderIngreso {
             System.out.println("No hay ningun ingreso de ese usuario en la fecha");
             return null;
         }
-        String concepto = rs.getString("concepto");
-        float balance = rs.getFloat("balance");
-        return new GatewayIngreso(nombreU, fecha, concepto, balance);
+        float cantidad = rs.getFloat("cantidad");
+        return new GatewayRetirada(nombreU, fecha, cantidad);
     }
 
-    public ArrayList<GatewayIngreso> findAll() throws SQLException {
+    public ArrayList<GatewayRetirada> findAll() throws SQLException {
         Connection con = DriverManager.getConnection(url, user, passwd);
         Statement state = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-        ResultSet rs = state.executeQuery("SELECT * FROM ingreso");
+        ResultSet rs = state.executeQuery("SELECT * FROM retirada");
 
-        ArrayList<GatewayIngreso> lcb = new ArrayList<>();
+        ArrayList<GatewayRetirada> lcb = new ArrayList<>();
         if(!rs.first()) return lcb;
         while (!rs.isAfterLast()) {
             String nombreU = rs.getString("nombreUsuario");
             Date fecha = rs.getDate("fechayhora");
-            String concepto = rs.getString("concepto");
-            float balance = rs.getFloat("balance");
-            lcb.add(new GatewayIngreso(nombreU, fecha, concepto, balance));
+            float cantidad = rs.getFloat("cantidad");
+            lcb.add(new GatewayRetirada(nombreU, fecha, cantidad));
             rs.next();
         }
         return lcb;
     }
 
-    public ArrayList<GatewayIngreso> findByBalance(float balance) throws SQLException {
+    public ArrayList<GatewayRetirada> findByCantidad(float cantidad) throws SQLException {
         Connection con = DriverManager.getConnection(url, user, passwd);
         Statement state = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-        ResultSet rs = state.executeQuery("SELECT * FROM ingreso WHERE balance = '"+balance+"'");
+        ResultSet rs = state.executeQuery("SELECT * FROM retirada WHERE cantidad = '"+cantidad+"'");
 
-        ArrayList<GatewayIngreso> lcb = new ArrayList<>();
+        ArrayList<GatewayRetirada> lcb = new ArrayList<>();
         if(!rs.first()) return lcb;
         while (!rs.isAfterLast()) {
             String nombreU = rs.getString("nombreUsuario");
             Date fecha = rs.getDate("fechayhora");
-            String concepto = rs.getString("concepto");
-            lcb.add(new GatewayIngreso(nombreU, fecha, concepto, balance));
+            lcb.add(new GatewayRetirada(nombreU, fecha, cantidad));
             rs.next();
         }
         return lcb;

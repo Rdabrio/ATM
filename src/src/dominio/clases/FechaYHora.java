@@ -14,6 +14,10 @@ public class FechaYHora extends Date {
         transferencias = new ArrayList<>();
     }
 
+    public String getFecha() {
+        return super.toString();
+    }
+
     public ArrayList<Operacion> getOperaciones() {
         return operaciones;
     }

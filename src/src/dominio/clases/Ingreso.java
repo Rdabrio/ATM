@@ -9,6 +9,7 @@ public class Ingreso extends Operacion{
         this.concepto = concepto;
     }
 
+
     public String getConcepto() {
         return concepto;
     }
