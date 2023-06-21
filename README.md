@@ -6,6 +6,8 @@ Dentro de una cuenta, un cliente puede ingresar dinero en efectivo, retirar dine
 bancaria a cualquier otra cuenta y recibir una transferencia bancaria de cualquier otra cuenta. Por el momento el sistema
 solamente opera en euros pero se plantea en un futuro añadir cambios de monedas.
 
+Para la persistencia del ATM uso el patrón adapter juntamente con el singleton para tener unos controladores de objetos de cada clase. 
+
 Para practicar el patron row data gateway he usado una base de datos MySQL gestionado por PHPMyAdmin en un servidor local XAMPP, el mismo PHPMyAdmin ha generado un .pdf donde se ve la estructura básica de las tablas creadas aunque faltan por documentar las foreign keys:
 -En cuentabancaria el nombreBanco hace referencia al atributo nombre de la tabla banco
 -En titular el emailPersona hace referencia al atributo email de la tabla persona
@@ -20,4 +22,4 @@ Para practicar el patron row data gateway he usado una base de datos MySQL gesti
 -En retirada el nombreUsuario hace referencia al atributo nombreUsuario de la tabla operacion
 -En retirada el fechayhora hace referencia al atributo fechayhora de la tabla operacion
 
-Para la persistencia del ATM uso el patrón adapter juntamente con el singleton para tener unos controladores de objetos de cada clase. 
+
