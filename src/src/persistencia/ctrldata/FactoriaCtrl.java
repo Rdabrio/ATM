@@ -14,15 +14,7 @@ public class FactoriaCtrl {
     private CtrlTransferencia ctrlTransferencia;
 
     private FactoriaCtrl() {
-        ctrlBanco = new ICtrlBanco();
-        ctrlCuentaBancaria = new ICtrlCuentaBancaria();
-        ctrlFechaYHora = new ICtrlFechaYHora();
-        ctrlIngreso = new ICtrlIngreso();
-        ctrlOperacion = new ICtrlOperacion();
-        ctrlPersona = new ICtrlPersona();
-        ctrlRetirada = new ICtrlRetirada();
-        ctrlTitular = new ICtrlTitular();
-        ctrlTransferencia = new ICtrlTransferencia();
+
     }
 
     public static FactoriaCtrl getInstance() {
@@ -31,38 +23,47 @@ public class FactoriaCtrl {
     }
 
     public CtrlBanco getCtrlBanco() {
+        if (ctrlBanco == null) ctrlBanco = new ICtrlBanco();
         return ctrlBanco;
     }
 
     public CtrlCuentaBancaria getCtrlCuentaBancaria() {
+        if (ctrlCuentaBancaria == null) ctrlCuentaBancaria = new ICtrlCuentaBancaria();
         return ctrlCuentaBancaria;
     }
 
     public CtrlFechaYHora getCtrlFechaYHora() {
+        if (ctrlFechaYHora == null) ctrlFechaYHora = new ICtrlFechaYHora();
         return ctrlFechaYHora;
     }
 
     public CtrlIngreso getCtrlIngreso() {
+        if (ctrlIngreso == null) ctrlIngreso = new ICtrlIngreso();
         return ctrlIngreso;
     }
 
     public CtrlOperacion getCtrlOperacion() {
+        if (ctrlOperacion == null) ctrlOperacion = new ICtrlOperacion();
         return ctrlOperacion;
     }
 
     public CtrlPersona getCtrlPersona() {
+        if (ctrlPersona == null) ctrlPersona = new ICtrlPersona();
         return ctrlPersona;
     }
 
     public CtrlRetirada getCtrlRetirada() {
+        if (ctrlRetirada == null) ctrlRetirada = new ICtrlRetirada();
         return ctrlRetirada;
     }
 
     public CtrlTitular getCtrlTitular() {
+        if (ctrlTitular == null) ctrlTitular = new ICtrlTitular();
         return ctrlTitular;
     }
 
     public CtrlTransferencia getCtrlTransferencia() {
+        if (ctrlTransferencia == null) ctrlTransferencia = new ICtrlTransferencia();
         return ctrlTransferencia;
     }
 }
