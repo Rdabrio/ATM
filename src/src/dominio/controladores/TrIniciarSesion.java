@@ -8,9 +8,9 @@ import persistencia.ctrldata.FactoriaCtrl;
 
 public class TrIniciarSesion extends Transaccion {
 
-    String nombreUsuario;
-    String password;
-    String result;
+    private String nombreUsuario;
+    private String password;
+    private String result;
 
     public TrIniciarSesion(String nombreUsuario, String password) {
         this.nombreUsuario = nombreUsuario;

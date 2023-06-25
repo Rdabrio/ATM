@@ -3,12 +3,17 @@ package dominio.clases;
 public class CuentaBancaria {
     private int id;
     private Banco bancoAdmin;
-
     private Titular titular;
 
     public CuentaBancaria(int id, Banco bancoAdmin) {
         this.id = id;
         this.bancoAdmin = bancoAdmin;
+    }
+
+    public CuentaBancaria(int id, Banco bancoAdmin, Titular titular) {
+        this.id = id;
+        this.bancoAdmin = bancoAdmin;
+        this.titular = titular;
     }
 
     public int getId() {

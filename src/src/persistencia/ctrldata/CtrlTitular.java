@@ -12,7 +12,9 @@ public interface CtrlTitular {
 
     public ArrayList<Titular> getAll();
 
-    public boolean exists(String email, int id, String nombreUsuario);
+    public boolean exists(String email, int id);
+
+    public boolean existsNombreUsuario(String nombreUsuario);
 
     public void add(Titular t);
 

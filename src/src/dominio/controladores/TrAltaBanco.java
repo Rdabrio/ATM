@@ -10,14 +10,14 @@ import java.util.ArrayList;
 
 public class TrAltaBanco extends Transaccion {
 
-    String nombre;
+    private String nombre;
 
-    ArrayList<CuentaBancaria> cuentas;
+    private ArrayList<CuentaBancaria> cuentas;
 
-    Banco result;
 
-    public TrAltaBanco(String nombre) {
+    public TrAltaBanco(String nombre, ArrayList<CuentaBancaria> cuentas) {
         this.nombre = nombre;
+        this.cuentas = cuentas;
     }
 
     @Override
@@ -30,12 +30,8 @@ public class TrAltaBanco extends Transaccion {
         Banco banco = new Banco(nombre);
         for (CuentaBancaria cb : cuentas) banco.addCuenta(cb);
 
-        //Añadir el banco al controlador para guardarlo en datos y dejarlo como resultado
+        //Añadir el banco al controlador para guardarlo en datos
         ctrlBanco.add(banco);
-        result = banco;
     }
 
-    public Banco getResult() {
-        return this.result;
-    }
 }

@@ -29,9 +29,15 @@ public class ICtrlTitular implements CtrlTitular {
     }
 
     @Override
-    public boolean exists(String email, int id, String nombreUsuario) {
+    public boolean exists(String email, int id) {
         return false;
     }
+
+    @Override
+    public boolean existsNombreUsuario(String nombreUsuario) {
+        return false;
+    }
+
 
     @Override
     public void add(Titular t) {
