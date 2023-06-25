@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-05-03T09:39:58.402Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="ssmNJdn_7EzCloRnvjFo" version="21.2.6" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-25T09:38:55.792Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="vZdYrfHTMumSjzgebiN6" version="21.3.6" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="1434" dy="834" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -172,14 +172,14 @@
         <mxCell id="jwsuZp4oUy8S84nJKgO8-1" value="-MonedaActual: String" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="jwsuZp4oUy8S84nJKgO8-0" vertex="1">
           <mxGeometry y="50" width="160" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="l-PK6tca4UGuNiTwcBy4-0" value="Claves: (Persona, Email), (CuentaBancaria, ID), (Banco, Nombre), (Titular, Persona::Email+CuentaBancaria::ID+NombreUsuario), (FechaYHora, Fecha+Hora)." style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="10" y="803" width="870" height="30" as="geometry" />
+        <mxCell id="l-PK6tca4UGuNiTwcBy4-0" value="Claves: (Persona, Email), (CuentaBancaria, ID), (Banco, Nombre), (Titular, Persona::Email+CuentaBancaria::ID), (FechaYHora, Fecha+Hora)." style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="55" y="803" width="780" height="30" as="geometry" />
         </mxCell>
         <mxCell id="l-PK6tca4UGuNiTwcBy4-1" value="RT1. La cantidad de una Transferencia no puede ser mayor al balance del Titular emisor." style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="10" y="833" width="500" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="l-PK6tca4UGuNiTwcBy4-2" value="RT2. El IBAN de un Titular es único para esa Persona y CuentaBancaria (clave alternativa)." style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="20" y="863" width="510" height="30" as="geometry" />
+        <mxCell id="l-PK6tca4UGuNiTwcBy4-2" value="RT2. El IBAN de un Titular es único en el sistema." style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="20" y="863" width="290" height="30" as="geometry" />
         </mxCell>
         <mxCell id="l-PK6tca4UGuNiTwcBy4-3" value="RT3. El Titular de una cuenta no puede hacerse una Transferencia a él mismo." style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="20" y="893" width="440" height="30" as="geometry" />
@@ -246,11 +246,14 @@
         <mxCell id="l-PK6tca4UGuNiTwcBy4-38" value="RT8. Un titular receptor no puede hacer una Operación en la misma FechaYHora en que recibe una Transferencia." style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="20" y="1043" width="630" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="LQbt1c_EwbjAfJ5gxb8m-0" value="*" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="LQbt1c_EwbjAfJ5gxb8m-0" value="*" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="555" y="468" width="30" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="LQbt1c_EwbjAfJ5gxb8m-1" value="*" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="LQbt1c_EwbjAfJ5gxb8m-1" value="*" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="465" y="380" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="krAit8V9WWh3mc2hW7TF-0" value="RT9. El NombreUsuario de un Titular es único (clave alternativa)." style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="20" y="1070" width="370" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
