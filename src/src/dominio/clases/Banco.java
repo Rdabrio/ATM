@@ -8,6 +8,12 @@ public class Banco {
 
     public Banco(String nombre) {
         this.nombre = nombre;
+        this.cuentas = new HashMap<>();
+    }
+
+    public Banco(String nombre, HashMap<Integer, CuentaBancaria> cuentas) {
+        this.nombre = nombre;
+        this.cuentas = cuentas;
     }
 
     public String getNombre() {
@@ -21,7 +27,7 @@ public class Banco {
         cuentas.put(c.getId(), c);
     }
 
-    public void removeCuenta(String id) {
+    public void removeCuenta(int id) {
         cuentas.remove(id);
     }
 
