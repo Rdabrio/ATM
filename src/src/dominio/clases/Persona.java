@@ -13,6 +13,12 @@ public class Persona {
         titulares = new HashMap<>();
     }
 
+    public Persona(String email, String nombre, HashMap<String, Titular> titulares) {
+        this.email = email;
+        this.nombre = nombre;
+        this.titulares = titulares;
+    }
+
     public String getEmail() {
         return email;
     }
