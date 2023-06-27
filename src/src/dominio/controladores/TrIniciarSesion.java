@@ -27,11 +27,10 @@ public class TrIniciarSesion extends Transaccion {
 
         //Obtener el Titular identificado por su nombre de usuario
         CtrlTitular ctrlTitular = FactoriaCtrl.getInstance().getCtrlTitular();
+        if (!ctrlTitular.existsNombreUsuario(nombreUsuario)) throw new UsuarioNoExiste();
         Titular t = ctrlTitular.getByNombreUsuario(nombreUsuario);
 
-        //Comprobacion de excepciones: no existe el Titular identificado por nombre de usuario,
-        //la contraseña es incorrecta
-        if (t == null) throw new UsuarioNoExiste();
+        //Comprobacion si la  contraseña es incorrecta
         if (!password.equals(t.getPassword())) throw new PasswordIncorrecta();
 
         //El resultado es la informacion basica de la cuenta
