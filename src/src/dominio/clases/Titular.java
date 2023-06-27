@@ -26,6 +26,16 @@ public class Titular {
         transferenciasRecibidas = new ArrayList<>();
     }
 
+    public Titular(String nombreUsuario, String password, float balance, int IBAN) {
+        this.nombreUsuario = nombreUsuario;
+        this.password = password;
+        this.balance = balance;
+        this.IBAN = IBAN;
+        operaciones = new ArrayList<>();
+        transferenciasEmitidas = new ArrayList<>();
+        transferenciasRecibidas = new ArrayList<>();
+    }
+
     public CuentaBancaria getCuenta() {
         return cuenta;
     }
