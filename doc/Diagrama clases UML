@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-06-25T09:38:55.792Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="vZdYrfHTMumSjzgebiN6" version="21.3.6" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-30T12:21:08.085Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="cLjXXVGO6KZy25TuIZ9C" version="21.5.0" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="1434" dy="834" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -30,7 +30,7 @@
             <mxPoint x="-40" y="32" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="htwcDR4oAQO4Jlm1x7_K-16" value="1" style="resizable=0;align=left;verticalAlign=bottom;labelBackgroundColor=none;fontSize=12;" parent="htwcDR4oAQO4Jlm1x7_K-15" connectable="0" vertex="1">
+        <mxCell id="htwcDR4oAQO4Jlm1x7_K-16" value="0..1" style="resizable=0;align=left;verticalAlign=bottom;labelBackgroundColor=none;fontSize=12;" parent="htwcDR4oAQO4Jlm1x7_K-15" connectable="0" vertex="1">
           <mxGeometry x="-1" relative="1" as="geometry">
             <mxPoint y="4" as="offset" />
           </mxGeometry>
@@ -178,14 +178,14 @@
         <mxCell id="l-PK6tca4UGuNiTwcBy4-1" value="RT1. La cantidad de una Transferencia no puede ser mayor al balance del Titular emisor." style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="10" y="833" width="500" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="l-PK6tca4UGuNiTwcBy4-2" value="RT2. El IBAN de un Titular es único en el sistema." style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="20" y="863" width="290" height="30" as="geometry" />
+        <mxCell id="l-PK6tca4UGuNiTwcBy4-2" value="RT2. El NombreUsuario de un Titular es único (clave alternativa)." style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="20" y="863" width="370" height="30" as="geometry" />
         </mxCell>
         <mxCell id="l-PK6tca4UGuNiTwcBy4-3" value="RT3. El Titular de una cuenta no puede hacerse una Transferencia a él mismo." style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="20" y="893" width="440" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="l-PK6tca4UGuNiTwcBy4-4" value="RT4. La cantidad de una Transferencia no puede ser mayor a 500000 ni menor o igual a 0." style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="20" y="923" width="510" height="30" as="geometry" />
+        <mxCell id="l-PK6tca4UGuNiTwcBy4-4" value="RT4. La cantidad de una Transferencia no puede ser mayor a 500000, menor o igual a 0 ni mayor al balance del Titular." style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="20" y="923" width="660" height="30" as="geometry" />
         </mxCell>
         <mxCell id="l-PK6tca4UGuNiTwcBy4-5" value="RT5. La cantidad de un Ingreso no puede ser mayor de 1000 ni menor o igual a 0." style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="20" y="953" width="460" height="30" as="geometry" />
@@ -237,23 +237,14 @@
         <mxCell id="l-PK6tca4UGuNiTwcBy4-35" value="RT6. La cantidad de una Retirada no puede ser mayor al balance del Titular, ni mayor a 1000 ni menor o igual a 0." style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="20" y="983" width="630" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="l-PK6tca4UGuNiTwcBy4-36" value="RT7. Un titular emisor no puede hacer una Operación y una Transferencia en la misma FechaYHora." style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="20" y="1013" width="560" height="30" as="geometry" />
-        </mxCell>
         <mxCell id="l-PK6tca4UGuNiTwcBy4-37" value="Realiza" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="330" y="530" width="60" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="l-PK6tca4UGuNiTwcBy4-38" value="RT8. Un titular receptor no puede hacer una Operación en la misma FechaYHora en que recibe una Transferencia." style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="20" y="1043" width="630" height="30" as="geometry" />
         </mxCell>
         <mxCell id="LQbt1c_EwbjAfJ5gxb8m-0" value="*" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="555" y="468" width="30" height="30" as="geometry" />
         </mxCell>
         <mxCell id="LQbt1c_EwbjAfJ5gxb8m-1" value="*" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="465" y="380" width="30" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="krAit8V9WWh3mc2hW7TF-0" value="RT9. El NombreUsuario de un Titular es único (clave alternativa)." style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="20" y="1070" width="370" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
