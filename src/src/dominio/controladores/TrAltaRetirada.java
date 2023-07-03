@@ -4,10 +4,7 @@ import dominio.clases.FechaYHora;
 import dominio.clases.Retirada;
 import dominio.clases.Titular;
 import dominio.excepciones.*;
-import persistencia.ctrldata.CtrlFechaYHora;
-import persistencia.ctrldata.CtrlRetirada;
-import persistencia.ctrldata.CtrlTitular;
-import persistencia.ctrldata.FactoriaCtrl;
+import persistencia.ctrldata.*;
 
 public class TrAltaRetirada extends Transaccion {
 
@@ -41,5 +38,7 @@ public class TrAltaRetirada extends Transaccion {
         ctrlFechaYHora.add(fechaYHora);
         CtrlRetirada ctrlRetirada = FactoriaCtrl.getInstance().getCtrlRetirada();
         ctrlRetirada.add(retirada);
+        CtrlOperacion ctrlOperacion = FactoriaCtrl.getInstance().getCtrlOperacion();
+        ctrlOperacion.add(retirada);
     }
 }
