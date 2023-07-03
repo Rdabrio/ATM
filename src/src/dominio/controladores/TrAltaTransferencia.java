@@ -4,6 +4,7 @@ import dominio.clases.FechaYHora;
 import dominio.clases.Titular;
 import dominio.clases.Transferencia;
 import dominio.excepciones.*;
+import persistencia.ctrldata.CtrlFechaYHora;
 import persistencia.ctrldata.CtrlTitular;
 import persistencia.ctrldata.CtrlTransferencia;
 import persistencia.ctrldata.FactoriaCtrl;
@@ -32,17 +33,23 @@ public class TrAltaTransferencia extends Transaccion {
         Titular emisor = ctrlTitular.getByNombreUsuario(nombreUsuarioEmisor);
         Titular receptor = ctrlTitular.getByNombreUsuario(nombreUsuarioReceptor);
 
+        float balanceEmisor = emisor.getBalance();
+
         //Comprobacion balances
-        if (cantidad > emisor.getBalance()) throw new BalanceInsuficiente();
+        if (cantidad > balanceEmisor) throw new BalanceInsuficiente();
         if (cantidad > 500000 || cantidad <= 0) throw new CantidadTransferenciaIncorrecta();
 
         //Crear transferencia y añadir los conjuntos de datos
-        Transferencia transferencia = new Transferencia(emisor, receptor, new FechaYHora(), cantidad, concepto);
+        FechaYHora fechaYHora = new FechaYHora();
+        Transferencia transferencia = new Transferencia(emisor, receptor, fechaYHora, cantidad, concepto);
         receptor.addTransferenciaRecibida(transferencia);
         emisor.addTransferenciaEmitida(transferencia);
         receptor.setBalance(receptor.getBalance()+cantidad);
-        emisor.setBalance(receptor.getBalance()-cantidad);
+        emisor.setBalance(balanceEmisor-cantidad);
+        fechaYHora.addTransferencia(transferencia);
 
+        CtrlFechaYHora ctrlFechaYHora = FactoriaCtrl.getInstance().getCtrlFechaYHora();
+        ctrlFechaYHora.add(fechaYHora);
         CtrlTransferencia ctrlTransferencia = FactoriaCtrl.getInstance().getCtrlTransferencia();
         ctrlTransferencia.add(transferencia);
     }
