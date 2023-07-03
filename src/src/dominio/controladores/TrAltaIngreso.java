@@ -2,7 +2,6 @@ package dominio.controladores;
 
 import dominio.clases.FechaYHora;
 import dominio.clases.Ingreso;
-import dominio.clases.Operacion;
 import dominio.clases.Titular;
 import dominio.excepciones.*;
 import persistencia.ctrldata.CtrlFechaYHora;
@@ -25,14 +24,14 @@ public class TrAltaIngreso extends Transaccion {
     }
 
     @Override
-    public void execute() throws PasswordIncorrecta, UsuarioNoExiste, BancoYaExiste, CuentaBancariaYaExiste, BancoNoExiste, TitularNoExiste, CuentaBancariaNoExiste, PersonaYaExiste, TitularYaExiste, PersonaNoExiste, BalanceInsuficiente, CantidadTransferenciaIncorrecta, CantidadIngresoIncorrecta {
+    public void execute() throws PasswordIncorrecta, UsuarioNoExiste, BancoYaExiste, CuentaBancariaYaExiste, BancoNoExiste, TitularNoExiste, CuentaBancariaNoExiste, PersonaYaExiste, TitularYaExiste, PersonaNoExiste, BalanceInsuficiente, CantidadTransferenciaIncorrecta, CantidadOperacionIncorrecta {
 
         //Pre: el titular existe
         CtrlTitular ctrlTitular = FactoriaCtrl.getInstance().getCtrlTitular();
         Titular titular = ctrlTitular.get(email, id);
 
         //Comprobacion de excepciones
-        if (cantidad <= 0 || cantidad > 1000) throw new CantidadIngresoIncorrecta();
+        if (cantidad <= 0 || cantidad > 1000) throw new CantidadOperacionIncorrecta();
 
         //Crear ingreso y añadirlo a datos
         FechaYHora fechaYHora = new FechaYHora();
