@@ -1,13 +1,10 @@
 package dominio.controladores;
 
-import dominio.clases.CuentaBancaria;
-import dominio.clases.Persona;
-import dominio.clases.Titular;
+import dominio.clases.*;
 import dominio.excepciones.*;
-import persistencia.ctrldata.CtrlCuentaBancaria;
-import persistencia.ctrldata.CtrlPersona;
-import persistencia.ctrldata.CtrlTitular;
-import persistencia.ctrldata.FactoriaCtrl;
+import persistencia.ctrldata.*;
+
+import java.util.ArrayList;
 
 public class TrBajaTitular extends Transaccion {
 
@@ -36,9 +33,31 @@ public class TrBajaTitular extends Transaccion {
         Persona persona = ctrlPersona.get(emailPersona);
         persona.removeTitular(titular.getNombreUsuario());
 
-        //AQUI ELIMINAR TITULAR DE LAS TRANSFERENCIAS Y SUS OPERACIONES
+        //Eliminar las transferencias emitidas o recibidas por el titular que queremos dar de baja y sus asociaciones
+        CtrlTransferencia ctrlTransferencia = FactoriaCtrl.getInstance().getCtrlTransferencia();
+        ArrayList<Transferencia> transferencias = ctrlTransferencia.getAll();
 
+        for (Transferencia t : transferencias) {
+            if (t.getEmisor() == titular || t.getReceptor() == titular) {
+                FechaYHora fechaYHora = t.getFechaYHora();
+                fechaYHora.removeTransferencia(t);
+                ctrlTransferencia.remove(t);
+            }
+        }
+
+        //Eliminar las operaciones hechas por el titular que queremos dar de baja y sus asociaciones
+        CtrlOperacion ctrlOperacion = FactoriaCtrl.getInstance().getCtrlOperacion();
+        ArrayList<Operacion> operaciones = ctrlOperacion.getAll();
+
+        for (Operacion o : operaciones) {
+            if (o.getTitular() == titular) {
+                FechaYHora fechaYHora = o.getFechaYHora();
+                fechaYHora.removeOperacion(o);
+                ctrlOperacion.remove(o);
+            }
+        }
+
+        //Eliminar titular
         ctrlTitular.remove(titular);
-
     }
 }
