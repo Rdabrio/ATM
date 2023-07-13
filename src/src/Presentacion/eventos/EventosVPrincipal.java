@@ -16,6 +16,17 @@ public class EventosVPrincipal implements IEventosVPrincipal {
     @Override
     public void actionPerformed(ActionEvent e) {
         switch(e.getActionCommand()) {
+            case "registrarseButton":
+                System.out.println("registrarseButton");
+                break;
+
+            case "altaCuentaButton":
+                System.out.println("altaCuentaButton");
+                break;
+
+            case "iniciarSesionButton":
+                this.vPrincipal.iniciarSesion();
+                break;
             default: break;
         }
     }
